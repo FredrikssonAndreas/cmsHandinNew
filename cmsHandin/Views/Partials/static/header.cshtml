@@ -31,40 +31,30 @@
     </div>
     </div>
 
-    @*<div class="header-nav bg-light">
-    <div class="container">
-        <a href="/">
-            <img src="@siteLogotype" alt="@siteName">
-        </a>
-        <nav>
-            <a href="/about-page/">About</a>
-            <a href="/service-page/">Services</a>
-            <a href="/project-page/">Projects</a>
-            <a href="/contact-page/">Contact</a>
-        </nav>
-        <button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
-    </div>*@
-
     <div class="header-nav bg-light">
-    <div class="container">
-        <a href="/">
-        <img src="@siteLogotype" alt="@siteName">
-        </a>
-        <nav class="head-nav">
-            @if (selection?.Length > 0)
-            {
-     
-                @foreach (var item in selection)
+        <div class="container">
+            <a href="/">
+            <img src="@siteLogotype" alt="@siteName">
+            </a>
+            <nav class="head-nav">
+                @if (selection?.Length > 0)
                 {
-                var navTitle = item?.Value<string>("navTitle") ?? "";    
-                <a class="@(item.IsAncestorOrSelf(Model) ? "head-link-active" : "head-link")" href="@item.Url(PublishedUrlProvider)" title="@navTitle">@item.Name</a>
+     
+                    @foreach (var item in selection)
+                    {
+                    var navTitle = item?.Value<string>("navTitle") ?? "";    
+                    <a class="@(item.IsAncestorOrSelf(Model) ? "head-link-active" : "head-link")" href="@item.Url(PublishedUrlProvider)" title="@navTitle">@item.Name</a>
                
-                }                              
-            }
+                    }                              
+                }
            
-        </nav>
-        <button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </nav>
+            <div id="search-box" class="search-box">
+                <form action="/search-results/" method="GET">
+                    <input type="text" name="query" placeholder="Search on this site..." class="search-input" />
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 </header>

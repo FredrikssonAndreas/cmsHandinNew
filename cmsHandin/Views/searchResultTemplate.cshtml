@@ -2,8 +2,8 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
 	Layout = "mainLayout.cshtml";
-    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+	ViewBag.Title = Model?.Value("pageTitle") ?? null;
 }
 
-@await Html.PartialAsync("pages/service/singleService")
+@await Html.PartialAsync("static/searchResults")
 @await Html.PartialAsync("static/letUsKnow")
